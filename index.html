@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dosha Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Discover Your Dosha</h1>
+            <p class="subtitle">Answer the following questions to find your Ayurvedic body type</p>
+        </header>
+
+        <div class="upload-section hidden" id="uploadSection">
+            <p>Could not auto-load questions. Please upload a CSV file:</p>
+            <p class="hint">Format: question, option1, option2, option3</p>
+            <input type="file" id="csvFile" accept=".csv">
+        </div>
+
+        <div id="quiz"></div>
+
+        <div class="submit-wrapper">
+            <button id="submitBtn" class="hidden" onclick="submitQuiz()">Submit Answers</button>
+        </div>
+
+        <div id="results" class="hidden">
+            <h2>Your Results</h2>
+            <div id="summary"></div>
+            <div id="answersTable"></div>
+        </div>
+    </div>
+
+    <script src="quiz.js"></script>
+</body>
+</html>
