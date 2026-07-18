@@ -1,6 +1,20 @@
 let questions = [];
 const doshaLabels = ['Vata', 'Pitta', 'Kapha'];
 
+// Maps question keywords to an icon emoji and a tooltip description
+const questionIcons = [
+    { icon: '🧍', tooltip: 'Body frame refers to your skeletal structure and overall build' },
+    { icon: '⚖️', tooltip: 'Body weight tendency describes how easily you gain or lose weight' },
+    { icon: '💇', tooltip: 'Hair texture reflects your natural hair quality and tendencies' },
+    { icon: '🧴', tooltip: 'Skin type describes your natural skin characteristics' },
+    { icon: '🦵', tooltip: 'Limbs refers to the appearance and feel of your arms and legs' },
+    { icon: '💅', tooltip: 'Nails reveal clues about your internal constitution' },
+    { icon: '👅', tooltip: 'Tongue characteristics are a key Ayurvedic diagnostic indicator' },
+    { icon: '👁️', tooltip: 'Eye shape and movement reflect your dosha tendencies' },
+    { icon: '🦴', tooltip: 'Joint quality and strength vary across dosha types' },
+    { icon: '🫁', tooltip: 'Bowel movement patterns are a key indicator of digestive health' },
+];
+
 document.addEventListener('DOMContentLoaded', loadQuiz);
 
 async function loadQuiz() {
@@ -87,11 +101,18 @@ function renderQuiz() {
     quizContainer.innerHTML = '';
 
     questions.forEach((q, i) => {
+        const meta = questionIcons[i] || { icon: 'ℹ️', tooltip: 'Additional information about this question' };
         const div = document.createElement('div');
         div.className = 'question';
         div.innerHTML = `
             <div class="question-number">Question ${i + 1} of ${questions.length}</div>
-            <h3>${q.question}</h3>
+            <div class="question-title">
+                <h3>${q.question}</h3>
+                <span class="info-icon" aria-label="More info" tabindex="0" role="button">
+                    ${meta.icon}
+                    <span class="tooltip">${meta.tooltip}</span>
+                </span>
+            </div>
             <div class="options">
                 ${q.options.map((opt, j) => `
                     <label data-dosha="${doshaLabels[j].toLowerCase()}">
