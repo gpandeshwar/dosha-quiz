@@ -1,18 +1,18 @@
 let questions = [];
 const doshaLabels = ['Vata', 'Pitta', 'Kapha'];
 
-// Maps question keywords to an icon emoji and a tooltip description
+// Maps question keywords to an icon emoji, a tooltip description, and a hover image
 const questionIcons = [
-    { icon: '🧍', tooltip: 'Body frame refers to your skeletal structure and overall build' },
-    { icon: '⚖️', tooltip: 'Body weight tendency describes how easily you gain or lose weight' },
-    { icon: '💇', tooltip: 'Hair texture reflects your natural hair quality and tendencies' },
-    { icon: '🧴', tooltip: 'Skin type describes your natural skin characteristics' },
-    { icon: '🦵', tooltip: 'Limbs refers to the appearance and feel of your arms and legs' },
-    { icon: '💅', tooltip: 'Nails reveal clues about your internal constitution' },
-    { icon: '👅', tooltip: 'Tongue characteristics are a key Ayurvedic diagnostic indicator' },
-    { icon: '👁️', tooltip: 'Eye shape and movement reflect your dosha tendencies' },
-    { icon: '🦴', tooltip: 'Joint quality and strength vary across dosha types' },
-    { icon: '🫁', tooltip: 'Bowel movement patterns are a key indicator of digestive health' },
+    { icon: '🧍', tooltip: 'Body frame refers to your skeletal structure and overall build', image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=280&h=180&fit=crop' },
+    { icon: '⚖️', tooltip: 'Body weight tendency describes how easily you gain or lose weight', image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=280&h=180&fit=crop' },
+    { icon: '💇', tooltip: 'Hair texture reflects your natural hair quality and tendencies', image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=280&h=180&fit=crop' },
+    { icon: '🧴', tooltip: 'Skin type describes your natural skin characteristics', image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=280&h=180&fit=crop' },
+    { icon: '🦵', tooltip: 'Limbs refers to the appearance and feel of your arms and legs', image: 'https://images.unsplash.com/photo-1532980400857-e8d9b846ef13?w=280&h=180&fit=crop' },
+    { icon: '💅', tooltip: 'Nails reveal clues about your internal constitution', image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=280&h=180&fit=crop' },
+    { icon: '👅', tooltip: 'Tongue characteristics are a key Ayurvedic diagnostic indicator', image: 'https://images.unsplash.com/photo-1576671081837-49000212a370?w=280&h=180&fit=crop' },
+    { icon: '👁️', tooltip: 'Eye shape and movement reflect your dosha tendencies', image: 'https://images.unsplash.com/photo-1516585427167-9f4af9627e6c?w=280&h=180&fit=crop' },
+    { icon: '🦴', tooltip: 'Joint quality and strength vary across dosha types', image: 'https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=280&h=180&fit=crop' },
+    { icon: '🫁', tooltip: 'Bowel movement patterns are a key indicator of digestive health', image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=280&h=180&fit=crop' },
 ];
 
 document.addEventListener('DOMContentLoaded', loadQuiz);
@@ -110,7 +110,10 @@ function renderQuiz() {
                 <h3>${q.question}</h3>
                 <span class="info-icon" aria-label="More info" tabindex="0" role="button">
                     ${meta.icon}
-                    <span class="tooltip">${meta.tooltip}</span>
+                    <span class="tooltip">
+                        <img src="${meta.image}" alt="${q.question}" class="tooltip-img">
+                        <span class="tooltip-text">${meta.tooltip}</span>
+                    </span>
                 </span>
             </div>
             <div class="options">
